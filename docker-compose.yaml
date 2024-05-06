@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  postgres14.9:
+    image: postgres:14-alpine
+    container_name: postgres14.9
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tiny_url_generator
+
+  tiny-url-generator-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres14.9
