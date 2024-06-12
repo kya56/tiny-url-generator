@@ -6,11 +6,11 @@ from app.persistence.models import Uri as UriModel
 from app.web.schemas import *
 from app.domain.uri_shortener import UriShortener
 
-
 router = APIRouter(
     prefix='/api/v1/url',
     tags=['command']
 )
+
 
 @router.post("/shorten", response_model=GetShortenUriRes)
 async def get_tinyurl(req: GetShortenUriReq,
